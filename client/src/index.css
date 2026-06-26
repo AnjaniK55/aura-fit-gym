@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold-50: #FCF9F2;
+  --color-gold-100: #F6EDB9;
+  --color-gold-200: #EEDC82;
+  --color-gold-300: #E6CA4E;
+  --color-gold-400: #DFB92E;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #BCA02B;
+  --color-gold-700: #A08520;
+  --color-gold-800: #816A17;
+  --color-gold-900: #5C4C10;
+
+  --color-obsidian-900: #0D0E12;
+  --color-obsidian-800: #13151B;
+  --color-obsidian-700: #1A1C23;
+  --color-obsidian-600: #252932;
+
+  --font-display: "Orbitron", sans-serif;
+  --font-sans: "Montserrat", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-obsidian-900);
+    color: #F3F4F6;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Hardware-Accelerated Animations */
+@keyframes pulse-whatsapp-gpu {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes pulse-gold-gpu {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5);
+  }
+  70% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold-gpu 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-whatsapp-gpu 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect reduced motion preferences (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-gold,
+  .animate-pulse-whatsapp,
+  .animate-fade-in-up {
+    animation: none !important;
+  }
+
+  .glass-card-hover {
+    transition: none !important;
+  }
+}
+
+/* Utility Classes */
+.glass {
+  background: rgba(26, 28, 35, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-gold {
+  background: rgba(212, 175, 55, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-card-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px -15px rgba(212, 175, 55, 0.25);
+}
+
+/* Scrollbar — WebKit + Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-obsidian-700) var(--color-obsidian-900);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-obsidian-900);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-obsidian-700);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}

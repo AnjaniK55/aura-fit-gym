@@ -1,0 +1,54 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, 'Please add a username'],
+    trim: true,
+    unique: true,
+    minlength: [3, 'Username must be at least 3 characters'],
+    maxlength: [30, 'Username cannot exceed 30 characters']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please add an email'],
+    unique: true,
+    lowercase: true,
+    match: [
+      /^\S+@\S+\.\S+$/,
+      'Please add a valid email'
+    ]
+  },
+  password: {
+    type: String,
+    required: [true, 'Please add a password'],
+    minlength: [8, 'Password must be at least 8 characters'],
+    select: false
+  },
+  role: {
+    type: String,
+    enum: ['member', 'admin'],
+    default: 'member'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Encrypt password using bcrypt before saving
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Match user entered password to hashed password in database
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('User', UserSchema);

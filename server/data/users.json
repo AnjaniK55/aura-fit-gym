@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "mock_1782498505442_g8ri41m5a",
+    "username": "testuser",
+    "email": "test@aurafit.com",
+    "password": "$2a$10$Pc6K3.kVDjw3dsXqwVqpKOh72iZASBVU3gQGethK5rYG9c.1NkhKC",
+    "role": "member",
+    "createdAt": "2026-06-26T18:28:25.442Z"
+  },
+  {
+    "_id": "mock_1782498608093_50obwmphc",
+    "username": "anjanikumar",
+    "email": "anjanikumarmanju@gmail.com",
+    "password": "$2a$10$wdb6Q.xk0lEinGWb2xHqbeRR/58yTi.VdQ8YmawDnbRHqX1DB43xi",
+    "role": "member",
+    "createdAt": "2026-06-26T18:30:08.093Z"
+  },
+  {
+    "_id": "mock_1782498806145_mxofs8lra",
+    "username": "mahak",
+    "email": "mahak@gmail.com",
+    "password": "$2a$10$WMg1xBbS58LK/xIDi404jeG9VYUS6BOr8F5jATa60MPAoXeFsoSVm",
+    "role": "member",
+    "createdAt": "2026-06-26T18:33:26.145Z"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "pass_1782509352257_s6keyloac",
+    "name": "Guest User",
+    "email": "guest@aurafit.com",
+    "phone": "1234567890",
+    "age": 25,
+    "fitnessGoal": "Build Muscle",
+    "visitDate": "2026-07-01",
+    "passId": "AFP-2026-EENW8T",
+    "createdAt": "2026-06-26T21:29:12.257Z"
+  },
+  {
+    "_id": "pass_1782509515965_h1i9jzgtf",
+    "name": "ANJANIKUMAR",
+    "email": "anjanikumarmanju@gmail.com",
+    "phone": "08871315138",
+    "age": 22,
+    "fitnessGoal": "Build Muscle",
+    "visitDate": "2026-07-28",
+    "passId": "AFP-2026-DFQXK5",
+    "createdAt": "2026-06-26T21:31:55.965Z"
+  }
+]
