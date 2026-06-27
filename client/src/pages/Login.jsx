@@ -30,10 +30,18 @@ const Login = ({ setCurrentPage, onLoginSuccess }) => {
         body: JSON.stringify(formData)
       });
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      }
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed. Please check your credentials.');
+        throw new Error((data && data.message) || `Login failed (Status: ${response.status}).`);
+      }
+
+      if (!data || !data.success) {
+        throw new Error('Invalid server response. Please verify that your API backend is running and reachable.');
       }
 
       onLoginSuccess(data.data);

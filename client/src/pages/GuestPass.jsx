@@ -68,10 +68,18 @@ const GuestPass = ({ setCurrentPage }) => {
         })
       });
 
-      const data = await response.json();
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      }
 
       if (!response.ok) {
-        throw new Error(data.message || 'Request failed. Please try again.');
+        throw new Error((data && data.message) || `Request failed with status ${response.status}`);
+      }
+
+      if (!data || !data.success) {
+        throw new Error('Invalid server response. Please verify that your API backend is running and reachable.');
       }
 
       setPassData(data.data);
